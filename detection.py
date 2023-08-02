@@ -14,27 +14,27 @@ img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
 # print(pytesseract.image_to_string(img_rgb))
 
 ### Detecting characters 
-# wImg, hImg, _ = img_rgb.shape
-# boxes = pytesseract.image_to_boxes(img_rgb)
-# for b in boxes.splitlines():
-#     b = b.split(' ')
-#     x, y, w, h = int(b[1]), int(b[2]), int(b[3]), int(b[4])
-#     print(x,y,w,h)
-#     cv2.rectangle(img_rgb, (x, wImg-y), (w, wImg-h), (0,0,255), 2)
-#     cv2.putText(img_rgb, b[0], (x, wImg-y+15), cv2.FONT_HERSHEY_COMPLEX, 1, (50,50,255), 2)
+wImg, hImg, _ = img_rgb.shape
+boxes = pytesseract.image_to_boxes(img_rgb)
+for b in boxes.splitlines():
+    b = b.split(' ')
+    x, y, w, h = int(b[1]), int(b[2]), int(b[3]), int(b[4])
+    print(x,y,w,h)
+    cv2.rectangle(img_rgb, (x, wImg-y), (w, wImg-h), (0,0,255), 2)
+    cv2.putText(img_rgb, b[0], (x, wImg-y+15), cv2.FONT_HERSHEY_COMPLEX, 1, (50,50,255), 2)
 
 # ### Detecting words
-# wImg, hImg, _ = img_rgb.shape
-# boxes = pytesseract.image_to_data(img_rgb)
-# print(boxes)
-# for x, b in enumerate(boxes.splitlines()):
-#     if x != 0:
-#         b = b.split()
-#         if len(b) == 12:
-#             x, y, w, h = int(b[6]), int(b[7]), int(b[8]), int(b[9])
-#             print(x,y,w,h)
-#             cv2.rectangle(img_rgb, (x, y), (w+x, h+y), (0,0,255), 2)
-#             cv2.putText(img_rgb, b[11], (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (50,50,255), 2)
+wImg, hImg, _ = img_rgb.shape
+boxes = pytesseract.image_to_data(img_rgb)
+print(boxes)
+for x, b in enumerate(boxes.splitlines()):
+    if x != 0:
+        b = b.split()
+        if len(b) == 12:
+            x, y, w, h = int(b[6]), int(b[7]), int(b[8]), int(b[9])
+            print(x,y,w,h)
+            cv2.rectangle(img_rgb, (x, y), (w+x, h+y), (0,0,255), 2)
+            cv2.putText(img_rgb, b[11], (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (50,50,255), 2)
 
 ### Detecting digits
 wImg, hImg, _ = img_rgb.shape
