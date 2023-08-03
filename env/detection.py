@@ -7,7 +7,7 @@ import deep_translator.exceptions
 
 # print(pytesseract.image_to_string(Image.open('./image-to-text-detection-python/images.png')))
 
-img_cv = cv2.imread(r'./image-to-text-detection-python/tesseract_nonenglish_arabic.webp')
+img_cv = cv2.imread(r'./images.png')
 # by default opencv stores images in BGR format and since pytesseract assumes
 # RGB format, we need to convert from BGR to RGB format/mode
 img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
